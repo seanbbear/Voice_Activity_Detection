@@ -1,0 +1,5 @@
+# Voice_Activity_Detection
+speechbrain VAD implementation
+
+實作speechbrain的Voice Activity Detection
+將原始爬取cts news的音檔進行分割
