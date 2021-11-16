@@ -20,6 +20,8 @@ def segment_wav(path, file):
     wav_file = path + file
     vad = VAD.from_hparams(source="speechbrain/vad-crdnn-libriparty", savedir="pretrained_models/vad-crdnn-libriparty")
     boundaries = vad.get_speech_segments(wav_file, overlap_small_chunk=True, apply_energy_VAD=True, len_th=2)
+    
+    # 去掉太短的段落(<2.5秒)
     boundaries = vad.remove_short_segments(boundaries, len_th=2.5)
     
     sound = AudioSegment.from_wav(wav_file)
